@@ -33,8 +33,7 @@ jobs:
         run: |
           cd backend/ticketflow
           mvn clean test
-          
-          
+
   build-image:
     runs-on: ubuntu-latest
     name: Build and push Docker image
