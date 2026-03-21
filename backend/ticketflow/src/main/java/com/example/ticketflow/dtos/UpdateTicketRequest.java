@@ -1,5 +1,6 @@
 package com.example.ticketflow.dtos;
 
+import com.example.ticketflow.dao.entities.TicketPriority;
 import com.example.ticketflow.dao.entities.TicketStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,5 +11,7 @@ public class UpdateTicketRequest {
         private String title;
         private String description;
         private TicketStatus status;
+        private TicketPriority priority;
+
     }
 

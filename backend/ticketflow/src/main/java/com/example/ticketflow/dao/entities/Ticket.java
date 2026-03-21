@@ -23,8 +23,11 @@ public class Ticket {
     @Column(nullable = false)
     private String description;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private TicketStatus status;
+
+    @Enumerated(EnumType.STRING)
+    private TicketPriority priority;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;

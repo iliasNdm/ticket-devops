@@ -23,6 +23,7 @@ public class TicketMapper {
                 ticket.getTitle(),
                 ticket.getDescription(),
                 ticket.getStatus(),
+                ticket.getPriority(),
                 ticket.getCreatedAt(),
                 ticket.getUpdatedAt()
         );
