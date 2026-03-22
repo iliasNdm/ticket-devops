@@ -31,6 +31,7 @@ public class TicketMapper {
     public void updateEntity(UpdateTicketRequest request, Ticket ticket) {
         ticket.setTitle(request.getTitle());
         ticket.setDescription(request.getDescription());
+        ticket.setStatus(request.getStatus());
 
         if (request.getStatus() != null) {
             ticket.setStatus(request.getStatus());

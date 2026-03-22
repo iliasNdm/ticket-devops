@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
     // 404 - resource not found
-    @ExceptionHandler(RessourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleRessourceNotFoundException(RessourceNotFoundException ex){
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleRessourceNotFoundException(ResourceNotFoundException ex){
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
