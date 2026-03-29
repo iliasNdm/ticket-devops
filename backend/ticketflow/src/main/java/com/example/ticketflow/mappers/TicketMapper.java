@@ -15,6 +15,7 @@ public class TicketMapper {
         ticket.setTitle(request.getTitle());
         ticket.setDescription(request.getDescription());
         ticket.setStatus(TicketStatus.OPEN);
+        ticket.setPriority(request.getPriority());
         return ticket;
     }
     public TicketResponse toResponse(Ticket ticket) {
@@ -31,10 +32,12 @@ public class TicketMapper {
     public void updateEntity(UpdateTicketRequest request, Ticket ticket) {
         ticket.setTitle(request.getTitle());
         ticket.setDescription(request.getDescription());
-        ticket.setStatus(request.getStatus());
 
         if (request.getStatus() != null) {
             ticket.setStatus(request.getStatus());
+        }
+        if (request.getPriority() != null) {
+            ticket.setPriority(request.getPriority());
         }
     }
 }
