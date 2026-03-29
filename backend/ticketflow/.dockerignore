@@ -1,0 +1,20 @@
+# Maven — généré automatiquement par le Multi-Stage build
+target/
+*.iml
+
+.git/
+.gitignore
+
+.env
+.env.example
+
+.idea/
+.mvn/
+*.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+docker-compose.yml
+Dockerfile
