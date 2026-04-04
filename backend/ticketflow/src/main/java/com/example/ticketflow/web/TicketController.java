@@ -62,6 +62,6 @@ public class TicketController {
 
     @GetMapping("/version")
     public ResponseEntity<String> version() {
-        return ResponseEntity.ok("TicketFlow v1.1 — build updated");
+        return ResponseEntity.ok("TicketFlow v1.2 — build updated");
     }
 }
