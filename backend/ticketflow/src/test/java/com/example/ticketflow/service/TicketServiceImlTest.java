@@ -34,7 +34,7 @@ class TicketServiceImlTest {
     private TicketMapper ticketMapper;
 
     @InjectMocks
-    private TicketServiceIml ticketService;
+    private TicketServiceImpl ticketService;
 
     private Ticket ticket;
     private TicketResponse ticketResponse;
