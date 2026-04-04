@@ -56,21 +56,52 @@ jobs:
     needs: unit-tests
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
           username : ${{ secrets.DOCKERHUB_USERNAME }}
           password : ${{ secrets.DOCKERHUB_TOKEN }}
-      - name : Build & Push
+
+      - name : Build Image
         uses : docker/build-push-action@v5
         with :
           context : backend/ticketflow
           file : backend/ticketflow/Dockerfile
-          push: true
+          push: false
+          load: true
           tags: |
               ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:latest
               ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:sha-${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+            
+
+      - name: Scan Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:latest
+          format: table
+          exit-code: 1
+          severity: CRITICAL
+          ignore-unfixed: true
+
+      - name: Push image
+        uses: docker/build-push-action@v5
+        with:
+          context: backend/ticketflow
+          file: backend/ticketflow/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:sha-${{ github.sha }}
+          cache-from: type=gha
 
 
-          
+
+
+
 
