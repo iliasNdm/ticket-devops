@@ -59,4 +59,9 @@ public class TicketController {
         ticketService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/version")
+    public ResponseEntity<String> version() {
+        return ResponseEntity.ok("TicketFlow v1.1 — build updated");
+    }
 }
