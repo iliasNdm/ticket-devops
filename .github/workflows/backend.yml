@@ -67,5 +67,10 @@ jobs:
           context : backend/ticketflow
           file : backend/ticketflow/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:latest
+          tags: |
+              ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:latest
+              ${{ secrets.DOCKERHUB_USERNAME }}/ticketflow:sha-${{ github.sha }}
+
+
+          
 
